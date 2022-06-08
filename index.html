@@ -1,89 +1,31 @@
 <!DOCTYPE html>
-<html>
+<html lang="en">
+
 <head>
-    <meta charset="utf-8">
-    <title></title>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="/css/index.css">
+    <script src="/js/index.js"></script>
+    <link rel="icon" href="https://www.eventslooped.com/posts/img/sexy-programming-languages-to-learn-2020/gopher-dance.gif">
+    <title>LoveShapa</title>
 </head>
-<body style="background-color: white" background="https://s1.ax1x.com/2020/09/21/wqFSpD.jpg">
 
-    <canvas id='cavs' style='position:fixed; z-index:-1;'></canvas>
-
+<body>
+    <div class="content">
+        <div id="text">
+            Dear Shapa:<br/><br/>&nbsp;&nbsp; I love three things in this world.<br/>&nbsp;&nbsp; Sun, Moon and You.<br/>&nbsp;&nbsp; Sun for morning, Moon for night, <br/>&nbsp; and You forever.
+        </div>
+        <div id="time"></div>
+    </div>
+    <script>
+        deviceReact();
+        var text = document.getElementById('text');
+        setInterval(function() {
+            timeElapse();
+        }, 500)
+        typeWord(text);
+    </script>
 </body>
+
 </html>
-<script type="text/javascript">
-    var canvas = document.getElementById("cavs");
-    const WIDTH = window.innerWidth;
-    const HEIGHT = window.innerHeight;
-    canvas.setAttribute("width", WIDTH);
-    canvas.setAttribute("height", HEIGHT);
-    var context = canvas.getContext("2d");
-    var start =
-    {
-    loves: [],
-    DURATION: 30,
-    begin: function()
-    {
-    this.createLove();
-    },
-    createLove: function()
-    {
-    for (var i = 0; i < WIDTH / 59; i++)
-    {
-    var love = new Love();
-    this.loves.push(love);
-    }
-    setInterval(this.drawLove.bind(this), this.DURATION);
-    },
-    drawLove: function()
-    {
-    context.clearRect(0, 0, WIDTH, HEIGHT);
-    for (var key in this.loves)
-    {
-    this.loves[key].draw();
-    }
-    }
-    }
-    function Love()
-    {
-    var me = this;
-    function rand()
-    {
-    me.maxScale = (Math.random() * 3.2 + 1.2) * WIDTH / 521;
-    me.curScale = 1.2 * WIDTH / 521;
-    me.x = Math.floor(Math.random() * WIDTH - 40);
-    me.y = Math.floor(HEIGHT - Math.random() * 200);
-    me.ColR = Math.floor(Math.random() * 255);
-    me.ColG = Math.floor(Math.random() * 255);
-    me.ColB = Math.floor(Math.random() * 255);
-    me.alpha = Math.random() * 0.2 + 0.8;
-    me.vector = Math.random() * 5 + 0.4;
-    }
-    (function(){rand();} ());
-    me.draw = function()
-    {
-    if (me.alpha < 0.01) rand();
-    if(me.curScale < me.maxScale) me.curScale += 0.3;
-    x = me.x;
-    y = me.y;
-    scale = me.curScale;
-    context.fillStyle = "rgba(" + me.ColR + "," + me.ColG + "," + me.ColB + "," + me.alpha + ")";
-    context.shadowBlur = 10;
-    context.shadowColor = "rgb(" + me.ColR + "," + me.ColG + "," + me.ColB + ")";
-    context.beginPath();
-    context.bezierCurveTo( x + 2.5*scale, y + 2.5*scale, x + 2.0*scale, y, x, y );
-    context.bezierCurveTo( x - 3.0*scale, y, x - 3.0*scale, y + 3.5*scale,x - 3.0*scale,y + 3.5*scale );
-    context.bezierCurveTo( x - 3.0*scale, y + 5.5*scale, x - 1.0*scale, y + 7.7*scale, x + 2.5*scale, y + 9.5*scale );
-    context.bezierCurveTo( x + 6.0*scale, y + 7.7*scale, x + 8.0*scale, y + 5.5*scale, x + 8.0*scale, y + 3.5*scale );
-    context.bezierCurveTo( x + 8.0*scale, y + 3.5*scale, x + 8.0*scale, y, x + 5.0*scale, y );
-    context.bezierCurveTo( x + 3.5*scale, y, x + 2.5*scale, y + 2.5*scale, x + 2.5*scale, y + 2.5*scale );
-    context.fill();
-    context.closePath();
-    me.y -= me.vector;
-    me.alpha -= (me.vector / 2.9 * 3.5 / HEIGHT);
-    }
-    }
-    window.onload = function()
-    {
-    start.begin();
-    }
-</script>
